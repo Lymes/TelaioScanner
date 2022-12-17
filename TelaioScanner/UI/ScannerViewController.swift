@@ -31,11 +31,9 @@ class ScannerViewController: UIViewController {
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var plateLabel: UILabel!
     
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellable: AnyCancellable?
     private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
     private static let targetSize = TargetSize(width: 300, height: 50)
-    
-    private let captureService: VideoCaptureServiceType = VideoCaptureService(targetSize: targetSize)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,35 +46,34 @@ class ScannerViewController: UIViewController {
     }
     
     private func startScan() {
-        captureService.start() { [weak self] result in
+        viewModel.startScan() { [weak self] result in
             switch result {
             case .accessDenied:
                 guard let alert = self?.accessDeniedAlert else { return }
                 self?.present(alert, animated: true)
             case .success:
                 guard let frame = self?.scannerView.layer.bounds,
-                      let videoPreviewLayer = self?.captureService.videoPreviewLayer else { return }
+                      let videoPreviewLayer = self?.viewModel.previewLayer else { return }
                 videoPreviewLayer.frame = frame
                 self?.scannerView.layer.addSublayer(videoPreviewLayer)
-                self?.captureService.delegate = self?.viewModel
             }
         }
     }
     
     private func setupObservers() {
-        viewModel.$recognizedString
+        cancellable = viewModel.$recognizedString
             .receive(on: DispatchQueue.main)
-            .sink { recognizedString in
-            self.plateLabel.text = recognizedString
-        }.store(in: &cancellables)
+            .sink { [weak self] recognizedString in
+                self?.plateLabel.text = recognizedString
+            }
     }
     
     @objc
     private func pinch(_ pinch: UIPinchGestureRecognizer) {
         switch pinch.state {
         case .began: fallthrough
-        case .changed: captureService.zoom(scaleFactor: pinch.scale, finished: false)
-        case .ended: captureService.zoom(scaleFactor: pinch.scale, finished: true)
+        case .changed: viewModel.zoom(scaleFactor: pinch.scale, finished: false)
+        case .ended: viewModel.zoom(scaleFactor: pinch.scale, finished: true)
         default: break
         }
     }
@@ -97,4 +94,3 @@ class ScannerViewController: UIViewController {
         print("☠️ \(self) is deallocated.")
     }
 }
-

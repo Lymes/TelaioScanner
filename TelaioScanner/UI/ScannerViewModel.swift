@@ -23,21 +23,42 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-import Vision
 import Combine
 import CoreImage
+import AVFoundation
 
 final class ScannerViewModel: NSObject, VideoCaptureServiceDelegate {
-        
+    
     @Published
-    var recognizedString: String = ""
+    private(set) var recognizedString: String = ""
     
     private let targetSize: TargetSize
     private let ocrService: OCRServiceType = OCRService(postProcessor: CarPlateOCRValidator())
-
+    private let captureService: VideoCaptureServiceType
+    
+    var previewLayer: AVCaptureVideoPreviewLayer {
+        captureService.videoPreviewLayer
+    }
+    
     init(targetSize: TargetSize) {
         self.targetSize = targetSize
+        self.captureService = VideoCaptureService(targetSize: targetSize)
+    }
+    
+    func startScan(completion: @escaping (VideoCaptureService.CaptureResult) -> Void) {
+        captureService.start() { [weak self] result in
+            switch result {
+            case .accessDenied:
+                completion(result)
+            case .success:
+                completion(result)
+                self?.captureService.delegate = self
+            }
+        }
+    }
+    
+    func zoom(scaleFactor: CGFloat, finished: Bool) {
+        captureService.zoom(scaleFactor: scaleFactor, finished: finished)
     }
     
     func dataOutput(frame: CVImageBuffer) {
