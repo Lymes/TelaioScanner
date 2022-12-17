@@ -65,7 +65,12 @@ final class ScannerViewModel: NSObject, VideoCaptureServiceDelegate {
     func dataOutput(frame: CVImageBuffer) {
         let width = CGFloat(CVPixelBufferGetWidth(frame))
         let height = CGFloat(CVPixelBufferGetHeight(frame))
-        let targetRect = CGRect(x: (width - targetSize.width) / 2.0, y: (height - targetSize.height) / 2.0, width: targetSize.width, height: targetSize.height).insetBy(dx: 10, dy: 0)
+        let targetRect = CGRect(
+            x: (width - targetSize.width) / 2.0,
+            y: (height - targetSize.height) / 2.0,
+            width: targetSize.width,
+            height: targetSize.height
+        ).insetBy(dx: 10, dy: 0)
         let image = CIImage(cvImageBuffer: frame)
         let cropped = image.cropped(to: targetRect).oriented(.upMirrored)
         self.ocrService.recognize(on: cropped) { [weak self] result in
