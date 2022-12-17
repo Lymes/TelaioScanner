@@ -30,8 +30,8 @@ import UIKit
 public class ScannerOverlayPreviewLayer: AVCaptureVideoPreviewLayer {
     
     // MARK: - OverlayScannerPreviewLayer
-    public var cornerLength: CGFloat = 30
-    public var targetCornerRadius: CGFloat = 30
+    public var cornerLength: CGFloat = 20
+    public var targetCornerRadius: CGFloat = 20
 
     public var lineWidth: CGFloat = 6
     public var lineColor: UIColor = .white

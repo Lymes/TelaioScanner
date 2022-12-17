@@ -27,11 +27,11 @@ import UIKit
 import Combine
 
 class ScannerViewController: UIViewController {
-
+    
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var plateLabel: UILabel!
     
-    private var cancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
     private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
     private static let targetSize = TargetSize(width: 300, height: 50)
     
@@ -41,31 +41,32 @@ class ScannerViewController: UIViewController {
         plateLabel.text = ""
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         scannerView.addGestureRecognizer(pinchRecognizer)
-        startScan()
         setupObservers()
-    }
-    
-    private func startScan() {
-        viewModel.startScan() { [weak self] result in
-            switch result {
-            case .accessDenied:
-                guard let alert = self?.accessDeniedAlert else { return }
-                self?.present(alert, animated: true)
-            case .success:
-                guard let frame = self?.scannerView.layer.bounds,
-                      let videoPreviewLayer = self?.viewModel.previewLayer else { return }
-                videoPreviewLayer.frame = frame
-                self?.scannerView.layer.addSublayer(videoPreviewLayer)
-            }
-        }
+        viewModel.startScan()
     }
     
     private func setupObservers() {
-        cancellable = viewModel.$recognizedString
+        viewModel.$recognizedString
             .receive(on: DispatchQueue.main)
             .sink { [weak self] recognizedString in
                 self?.plateLabel.text = recognizedString
-            }
+            }.store(in: &cancellables)
+        
+        viewModel.$accessDenied
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] flag in
+                guard flag, let alert = self?.accessDeniedAlert else { return }
+                self?.present(alert, animated: true)
+            }.store(in: &cancellables)
+        
+        viewModel.$captureStarted
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] flag in
+                guard flag, let frame = self?.scannerView.layer.bounds,
+                      let videoPreviewLayer = self?.viewModel.previewLayer else { return }
+                videoPreviewLayer.frame = frame
+                self?.scannerView.layer.addSublayer(videoPreviewLayer)
+            }.store(in: &cancellables)
     }
     
     @objc

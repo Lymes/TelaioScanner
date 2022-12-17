@@ -53,7 +53,7 @@ final class VideoCaptureService: NSObject, VideoCaptureServiceType {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         let layer = ScannerOverlayPreviewLayer(session: session)
         layer.maskSize = targetSize
-        layer.backgroundColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
         layer.targetCornerRadius = 10
         layer.lineCap = .round
         layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -80,9 +80,9 @@ final class VideoCaptureService: NSObject, VideoCaptureServiceType {
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { [weak self] response in
             if response {
                 self?.setUpCaptureSession()
-                DispatchQueue.main.async { completion(.success) }
+                completion(.success)
             } else {
-                DispatchQueue.main.async { completion(.accessDenied) }
+                completion(.accessDenied)
             }
         }
     }

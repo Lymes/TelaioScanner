@@ -29,9 +29,10 @@ import AVFoundation
 
 final class ScannerViewModel: NSObject, VideoCaptureServiceDelegate {
     
-    @Published
-    private(set) var recognizedString: String = ""
-    
+    @Published private(set) var recognizedString: String = ""
+    @Published private(set) var accessDenied: Bool = false
+    @Published private(set) var captureStarted: Bool = false
+
     private let targetSize: TargetSize
     private let ocrService: OCRServiceType = OCRService(postProcessor: CarPlateOCRValidator())
     private let captureService: VideoCaptureServiceType
@@ -45,13 +46,13 @@ final class ScannerViewModel: NSObject, VideoCaptureServiceDelegate {
         self.captureService = VideoCaptureService(targetSize: targetSize)
     }
     
-    func startScan(completion: @escaping (VideoCaptureService.CaptureResult) -> Void) {
+    func startScan() -> Void {
         captureService.start() { [weak self] result in
             switch result {
             case .accessDenied:
-                completion(result)
+                self?.accessDenied = true
             case .success:
-                completion(result)
+                self?.captureStarted = true
                 self?.captureService.delegate = self
             }
         }
