@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B043DBD294CA7F500420250 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DBC294CA7F500420250 /* AppDelegate.swift */; };
+		1B043DBF294CA7F500420250 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DBE294CA7F500420250 /* SceneDelegate.swift */; };
+		1B043DC1294CA7F500420250 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DC0294CA7F500420250 /* ScannerViewController.swift */; };
+		1B043DC6294CA7F800420250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B043DC5294CA7F800420250 /* Assets.xcassets */; };
+		1B043DF3294CA8A000420250 /* CarPlateOCRValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DF0294CA8A000420250 /* CarPlateOCRValidator.swift */; };
+		1B043DF4294CA8A000420250 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DF1294CA8A000420250 /* OCRService.swift */; };
+		1BA5DC87294D9D1100048BE8 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5DC86294D9D1100048BE8 /* VideoCaptureService.swift */; };
+		1BA5DC89294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5DC88294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift */; };
+		1BA5DC92294DDAB100048BE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA5DC90294DDAB100048BE8 /* Main.storyboard */; };
+		1BA5DC94294E38D000048BE8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA5DC93294E38D000048BE8 /* Launch Screen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B043DB9294CA7F500420250 /* TelaioScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelaioScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B043DBC294CA7F500420250 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B043DBE294CA7F500420250 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1B043DC0294CA7F500420250 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		1B043DC5294CA7F800420250 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B043DCA294CA7F800420250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B043DF0294CA8A000420250 /* CarPlateOCRValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPlateOCRValidator.swift; sourceTree = "<group>"; };
+		1B043DF1294CA8A000420250 /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
+		1BA5DC86294D9D1100048BE8 /* VideoCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
+		1BA5DC88294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerOverlayPreviewLayer.swift; sourceTree = "<group>"; };
+		1BA5DC91294DDAB100048BE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1BA5DC93294E38D000048BE8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B043DB6294CA7F500420250 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B043DB0294CA7F500420250 = {
+			isa = PBXGroup;
+			children = (
+				1B043DBB294CA7F500420250 /* TelaioScanner */,
+				1B043DBA294CA7F500420250 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B043DBA294CA7F500420250 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B043DB9294CA7F500420250 /* TelaioScanner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B043DBB294CA7F500420250 /* TelaioScanner */ = {
+			isa = PBXGroup;
+			children = (
+				1BA5DC81294D996A00048BE8 /* UI */,
+				1B043DEE294CA8A000420250 /* Services */,
+				1BA5DC82294D997F00048BE8 /* resources */,
+				1B043DBC294CA7F500420250 /* AppDelegate.swift */,
+				1B043DBE294CA7F500420250 /* SceneDelegate.swift */,
+				1B043DCA294CA7F800420250 /* Info.plist */,
+			);
+			path = TelaioScanner;
+			sourceTree = "<group>";
+		};
+		1B043DEE294CA8A000420250 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1BA5DC85294D9CF100048BE8 /* VideoCaptureService */,
+				1B043DEF294CA8A000420250 /* OCRService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1B043DEF294CA8A000420250 /* OCRService */ = {
+			isa = PBXGroup;
+			children = (
+				1B043DF0294CA8A000420250 /* CarPlateOCRValidator.swift */,
+				1B043DF1294CA8A000420250 /* OCRService.swift */,
+			);
+			path = OCRService;
+			sourceTree = "<group>";
+		};
+		1BA5DC81294D996A00048BE8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1B043DC0294CA7F500420250 /* ScannerViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1BA5DC82294D997F00048BE8 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BA5DC90294DDAB100048BE8 /* Main.storyboard */,
+				1B043DC5294CA7F800420250 /* Assets.xcassets */,
+				1BA5DC93294E38D000048BE8 /* Launch Screen.storyboard */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		1BA5DC85294D9CF100048BE8 /* VideoCaptureService */ = {
+			isa = PBXGroup;
+			children = (
+				1BA5DC86294D9D1100048BE8 /* VideoCaptureService.swift */,
+				1BA5DC88294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift */,
+			);
+			path = VideoCaptureService;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B043DB8294CA7F500420250 /* TelaioScanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B043DE3294CA7F800420250 /* Build configuration list for PBXNativeTarget "TelaioScanner" */;
+			buildPhases = (
+				1B043DB5294CA7F500420250 /* Sources */,
+				1B043DB6294CA7F500420250 /* Frameworks */,
+				1B043DB7294CA7F500420250 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TelaioScanner;
+			productName = TelaioScanner;
+			productReference = 1B043DB9294CA7F500420250 /* TelaioScanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B043DB1294CA7F500420250 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					1B043DB8294CA7F500420250 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = 1B043DB4294CA7F500420250 /* Build configuration list for PBXProject "TelaioScanner" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B043DB0294CA7F500420250;
+			productRefGroup = 1B043DBA294CA7F500420250 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B043DB8294CA7F500420250 /* TelaioScanner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B043DB7294CA7F500420250 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BA5DC94294E38D000048BE8 /* Launch Screen.storyboard in Resources */,
+				1B043DC6294CA7F800420250 /* Assets.xcassets in Resources */,
+				1BA5DC92294DDAB100048BE8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B043DB5294CA7F500420250 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B043DC1294CA7F500420250 /* ScannerViewController.swift in Sources */,
+				1B043DF3294CA8A000420250 /* CarPlateOCRValidator.swift in Sources */,
+				1BA5DC87294D9D1100048BE8 /* VideoCaptureService.swift in Sources */,
+				1B043DBD294CA7F500420250 /* AppDelegate.swift in Sources */,
+				1BA5DC89294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift in Sources */,
+				1B043DF4294CA8A000420250 /* OCRService.swift in Sources */,
+				1B043DBF294CA7F500420250 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1BA5DC90294DDAB100048BE8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1BA5DC91294DDAB100048BE8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B043DE1294CA7F800420250 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1B043DE2294CA7F800420250 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B043DE4294CA7F800420250 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QVFBZ7RHN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TelaioScanner/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lymes.TelaioScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B043DE5294CA7F800420250 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QVFBZ7RHN2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TelaioScanner/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lymes.TelaioScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B043DB4294CA7F500420250 /* Build configuration list for PBXProject "TelaioScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B043DE1294CA7F800420250 /* Debug */,
+				1B043DE2294CA7F800420250 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B043DE3294CA7F800420250 /* Build configuration list for PBXNativeTarget "TelaioScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B043DE4294CA7F800420250 /* Debug */,
+				1B043DE5294CA7F800420250 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B043DB1294CA7F500420250 /* Project object */;
+}
