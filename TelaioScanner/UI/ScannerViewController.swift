@@ -24,18 +24,18 @@
 //
 
 import UIKit
-import Vision
-
+import Combine
 
 class ScannerViewController: UIViewController {
 
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var plateLabel: UILabel!
     
+    private var cancellables = Set<AnyCancellable>()
+    private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
     private static let targetSize = TargetSize(width: 300, height: 50)
     
     private let captureService: VideoCaptureServiceType = VideoCaptureService(targetSize: targetSize)
-    private let ocrService: OCRServiceType = OCRService(postProcessor: CarPlateOCRValidator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,7 @@ class ScannerViewController: UIViewController {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         scannerView.addGestureRecognizer(pinchRecognizer)
         startScan()
+        setupObservers()
     }
     
     private func startScan() {
@@ -57,9 +58,17 @@ class ScannerViewController: UIViewController {
                       let videoPreviewLayer = self?.captureService.videoPreviewLayer else { return }
                 videoPreviewLayer.frame = frame
                 self?.scannerView.layer.addSublayer(videoPreviewLayer)
-                self?.captureService.delegate = self
+                self?.captureService.delegate = self?.viewModel
             }
         }
+    }
+    
+    private func setupObservers() {
+        viewModel.$recognizedString
+            .receive(on: DispatchQueue.main)
+            .sink { recognizedString in
+            self.plateLabel.text = recognizedString
+        }.store(in: &cancellables)
     }
     
     @objc
@@ -89,24 +98,3 @@ class ScannerViewController: UIViewController {
     }
 }
 
-extension ScannerViewController: VideoCaptureServiceDelegate {
-    
-    func dataOutput(frame: CVImageBuffer) {
-        let width = CGFloat(CVPixelBufferGetWidth(frame))
-        let height = CGFloat(CVPixelBufferGetHeight(frame))
-        let targetRect = CGRect(x: (width - Self.targetSize.width) / 2.0, y: (height - Self.targetSize.height) / 2.0, width: Self.targetSize.width, height: Self.targetSize.height).insetBy(dx: 10, dy: 0)
-        let image = CIImage(cvImageBuffer: frame)
-        let cropped = image.cropped(to: targetRect).oriented(.upMirrored)
-        self.ocrService.recognize(on: cropped) { [weak self] result in
-            switch result {
-            case .success(let strings):
-                guard strings.count > 0 else { return }
-                DispatchQueue.main.async {
-                    self?.plateLabel.text = strings.joined(separator: ",")
-                }
-            case .failure( _ ):
-                break
-            }
-        }
-    }
-}
