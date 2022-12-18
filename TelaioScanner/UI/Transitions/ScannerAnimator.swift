@@ -14,7 +14,7 @@ class ScannerAnimator: NSObject {
 extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -81,7 +81,7 @@ extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshot)
         toVC.view.alpha = 0
-        fromVC.view.subviews.forEach { $0.removeFromSuperview() }
+        fromVC.view.subviews.forEach { $0.isHidden = true }
         
         let toView = transitionContext.view(forKey: .to)
         if let view = toView {
