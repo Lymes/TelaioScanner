@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IOf-Uy-KXz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="FirstViewController" customModule="TelaioScanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="JXC-hB-mDP" kind="show" id="sdd-f0-Kxc"/>
+                                    <segue destination="JXC-hB-mDP" kind="presentation" customClass="ScannerSegue" customModule="TelaioScanner" customModuleProvider="target" modalPresentationStyle="fullScreen" id="sdd-f0-Kxc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,6 +43,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wDe-xY-yld"/>
+                    <connections>
+                        <outlet property="scanButton" destination="Kzf-s5-I2r" id="wSs-CT-vPh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +60,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xk-eV-Q99">
-                                <rect key="frame" x="10" y="123" width="373" height="400"/>
+                                <rect key="frame" x="10" y="178.33333333333337" width="373" height="400"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanner" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-VO-Ble">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="400"/>
@@ -73,7 +76,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-VZ-OXR">
-                                <rect key="frame" x="20" y="573" width="353" height="60"/>
+                                <rect key="frame" x="20" y="628.33333333333337" width="353" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Telaio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5m-bN-TEv">
                                         <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="60"/>
@@ -92,16 +95,43 @@
                                     <constraint firstAttribute="height" constant="60" id="tSL-OO-cvH"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Inquadra numero di telaio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQu-ou-dEg">
+                                <rect key="frame" x="20" y="79" width="283.33333333333331" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMy-xJ-LBi">
+                                <rect key="frame" x="333" y="79" width="40" height="32"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="tapOnClose" destination="JXC-hB-mDP" eventType="touchUpInside" id="NNM-Tx-KFu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puoi usare pinch gesture per zoommare la camera" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMJ-qW-Y6T">
+                                <rect key="frame" x="20" y="117.66666666666667" width="353" height="40.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZTV-CR-Chy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZTV-CR-Chy" firstAttribute="trailing" secondItem="9xk-eV-Q99" secondAttribute="trailing" constant="10" id="4f2-KO-mvF"/>
-                            <constraint firstItem="9xk-eV-Q99" firstAttribute="top" secondItem="ZTV-CR-Chy" secondAttribute="top" constant="20" id="QPa-m8-jwz"/>
+                            <constraint firstItem="GMy-xJ-LBi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zQu-ou-dEg" secondAttribute="trailing" constant="20" id="BCJ-kx-XuK"/>
+                            <constraint firstItem="GMy-xJ-LBi" firstAttribute="top" secondItem="ZTV-CR-Chy" secondAttribute="top" constant="20" id="CTB-eD-0ug"/>
+                            <constraint firstItem="DMJ-qW-Y6T" firstAttribute="top" secondItem="zQu-ou-dEg" secondAttribute="bottom" constant="10" id="Nxm-8K-gp3"/>
+                            <constraint firstItem="ZTV-CR-Chy" firstAttribute="trailing" secondItem="DMJ-qW-Y6T" secondAttribute="trailing" constant="20" id="OEt-px-BJZ"/>
                             <constraint firstItem="rT1-VZ-OXR" firstAttribute="top" secondItem="9xk-eV-Q99" secondAttribute="bottom" constant="50" id="TQU-DN-oTH"/>
+                            <constraint firstItem="ZTV-CR-Chy" firstAttribute="trailing" secondItem="GMy-xJ-LBi" secondAttribute="trailing" constant="20" id="aVv-mD-kTw"/>
                             <constraint firstItem="ZTV-CR-Chy" firstAttribute="trailing" secondItem="rT1-VZ-OXR" secondAttribute="trailing" constant="20" id="blR-6n-NZn"/>
+                            <constraint firstItem="DMJ-qW-Y6T" firstAttribute="leading" secondItem="ZTV-CR-Chy" secondAttribute="leading" constant="20" id="eHN-ta-Nfj"/>
+                            <constraint firstItem="GMy-xJ-LBi" firstAttribute="top" secondItem="zQu-ou-dEg" secondAttribute="top" id="fnE-GK-2AF"/>
                             <constraint firstItem="9xk-eV-Q99" firstAttribute="leading" secondItem="ZTV-CR-Chy" secondAttribute="leading" constant="10" id="i9X-Iy-CH5"/>
                             <constraint firstItem="rT1-VZ-OXR" firstAttribute="leading" secondItem="ZTV-CR-Chy" secondAttribute="leading" constant="20" id="nbC-qI-Cbf"/>
+                            <constraint firstItem="9xk-eV-Q99" firstAttribute="top" secondItem="DMJ-qW-Y6T" secondAttribute="bottom" constant="20" id="oZw-xk-UKB"/>
+                            <constraint firstItem="zQu-ou-dEg" firstAttribute="leading" secondItem="ZTV-CR-Chy" secondAttribute="leading" constant="20" id="vlh-vU-waU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mcl-Pv-3Ch"/>
@@ -114,25 +144,12 @@
             </objects>
             <point key="canvasLocation" x="558" y="-56"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="It6-V2-uHU">
-            <objects>
-                <navigationController id="IOf-Uy-KXz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Goe-Kd-hLN">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="vzF-f8-4Ip"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9aE-cQ-pO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1124" y="-56"/>
-        </scene>
     </scenes>
     <resources>
         <image name="scanner" width="640" height="640"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -14,6 +14,9 @@
 		1B043DF3294CA8A000420250 /* CarPlateOCRValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DF0294CA8A000420250 /* CarPlateOCRValidator.swift */; };
 		1B043DF4294CA8A000420250 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B043DF1294CA8A000420250 /* OCRService.swift */; };
 		1B418E90294E44B400973EB6 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B418E8F294E44B400973EB6 /* ScannerViewModel.swift */; };
+		1B8B6D31294F0CDE00F309B0 /* ScannerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B6D30294F0CDE00F309B0 /* ScannerSegue.swift */; };
+		1B8B6D33294F0D0A00F309B0 /* ScannerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B6D32294F0D0A00F309B0 /* ScannerAnimator.swift */; };
+		1B8B6D35294F1C0500F309B0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B6D34294F1C0500F309B0 /* FirstViewController.swift */; };
 		1BA5DC87294D9D1100048BE8 /* VideoCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5DC86294D9D1100048BE8 /* VideoCaptureService.swift */; };
 		1BA5DC89294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA5DC88294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift */; };
 		1BA5DC92294DDAB100048BE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA5DC90294DDAB100048BE8 /* Main.storyboard */; };
@@ -30,6 +33,9 @@
 		1B043DF0294CA8A000420250 /* CarPlateOCRValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPlateOCRValidator.swift; sourceTree = "<group>"; };
 		1B043DF1294CA8A000420250 /* OCRService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRService.swift; sourceTree = "<group>"; };
 		1B418E8F294E44B400973EB6 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		1B8B6D30294F0CDE00F309B0 /* ScannerSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerSegue.swift; sourceTree = "<group>"; };
+		1B8B6D32294F0D0A00F309B0 /* ScannerAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerAnimator.swift; sourceTree = "<group>"; };
+		1B8B6D34294F1C0500F309B0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1BA5DC86294D9D1100048BE8 /* VideoCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureService.swift; sourceTree = "<group>"; };
 		1BA5DC88294DC9FF00048BE8 /* ScannerOverlayPreviewLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerOverlayPreviewLayer.swift; sourceTree = "<group>"; };
 		1BA5DC91294DDAB100048BE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,11 +100,22 @@
 			path = OCRService;
 			sourceTree = "<group>";
 		};
+		1B8B6D2F294F0CC200F309B0 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				1B8B6D30294F0CDE00F309B0 /* ScannerSegue.swift */,
+				1B8B6D32294F0D0A00F309B0 /* ScannerAnimator.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		1BA5DC81294D996A00048BE8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1B8B6D2F294F0CC200F309B0 /* Transitions */,
 				1B043DC0294CA7F500420250 /* ScannerViewController.swift */,
 				1B418E8F294E44B400973EB6 /* ScannerViewModel.swift */,
+				1B8B6D34294F1C0500F309B0 /* FirstViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -194,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B043DC1294CA7F500420250 /* ScannerViewController.swift in Sources */,
+				1B8B6D33294F0D0A00F309B0 /* ScannerAnimator.swift in Sources */,
 				1B043DF3294CA8A000420250 /* CarPlateOCRValidator.swift in Sources */,
 				1BA5DC87294D9D1100048BE8 /* VideoCaptureService.swift in Sources */,
 				1B043DBD294CA7F500420250 /* AppDelegate.swift in Sources */,
@@ -201,6 +219,8 @@
 				1B043DF4294CA8A000420250 /* OCRService.swift in Sources */,
 				1B043DBF294CA7F500420250 /* SceneDelegate.swift in Sources */,
 				1B418E90294E44B400973EB6 /* ScannerViewModel.swift in Sources */,
+				1B8B6D31294F0CDE00F309B0 /* ScannerSegue.swift in Sources */,
+				1B8B6D35294F1C0500F309B0 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

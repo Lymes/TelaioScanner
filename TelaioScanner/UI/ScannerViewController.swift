@@ -42,7 +42,13 @@ class ScannerViewController: UIViewController {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         scannerView.addGestureRecognizer(pinchRecognizer)
         setupObservers()
+#if !targetEnvironment(simulator)
         viewModel.startScan()
+#endif
+    }
+    
+    @IBAction func tapOnClose() {
+        dismiss(animated: true)
     }
     
     private func setupObservers() {
@@ -72,7 +78,6 @@ class ScannerViewController: UIViewController {
     @objc
     private func pinch(_ pinch: UIPinchGestureRecognizer) {
         switch pinch.state {
-        case .began: fallthrough
         case .changed: viewModel.zoom(scaleFactor: pinch.scale, finished: false)
         case .ended: viewModel.zoom(scaleFactor: pinch.scale, finished: true)
         default: break
