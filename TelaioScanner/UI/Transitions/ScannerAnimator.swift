@@ -29,69 +29,87 @@ extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
     }
         
     func transition(fromVC: FirstViewController, toVC: ScannerViewController, transitionContext: UIViewControllerContextTransitioning) {
-        guard let snapshot = toVC.view.snapshotView(afterScreenUpdates: true) else { return }
-        let originFrame = fromVC.scanButton.frame
-        let containerView = transitionContext.containerView
-        let finalFrame = transitionContext.finalFrame(for: toVC)
+        guard let snapshot = fromVC.view.snapshotView(afterScreenUpdates: true) else { return }
+        snapshot.frame = fromVC.view.frame
+        let scaleX = toVC.scannerView.frame.width / fromVC.scanButton.frame.width
+        let scaleY = toVC.scannerView.frame.height / fromVC.scanButton.frame.height
+        let transY = toVC.scannerView.center.y - toVC.view.frame.height / 2.0 + 30
+        let transform = CGAffineTransform(scaleX: scaleX, y: scaleY).translatedBy(x: 0, y: transY)
 
-        snapshot.frame = originFrame
-        snapshot.layer.cornerRadius = fromVC.scanButton.layer.cornerRadius
-        snapshot.layer.masksToBounds = true
-        
+        let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshot)
-        toVC.view.isHidden = true
-        
+        toVC.view.alpha = 0
+
         let toView = transitionContext.view(forKey: .to)
-        
         if let view = toView {
             transitionContext.containerView.addSubview(view)
         }
-        
         let duration = transitionDuration(using: transitionContext)
-        
-        UIView.animate(withDuration: duration, animations: {
-            snapshot.frame = finalFrame
-            snapshot.layer.cornerRadius = 0
-        }) { (success) in
-            toVC.view.isHidden = false
-            snapshot.removeFromSuperview()
-            transitionContext.completeTransition(true)
-        }
+        UIView.animateKeyframes(
+            withDuration: duration,
+            delay: 0,
+            options: .calculationModeCubic,
+            animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
+                    snapshot.transform = transform
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+                    toVC.view.alpha = 1
+                }
+            },
+            completion: { _ in
+                snapshot.removeFromSuperview()
+                if transitionContext.transitionWasCancelled {
+                    toVC.view.removeFromSuperview()
+                }
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            }
+        )
     }
 
     func transition(fromVC: ScannerViewController, toVC: FirstViewController, transitionContext: UIViewControllerContextTransitioning) {
         guard let snapshot = fromVC.view.snapshotView(afterScreenUpdates: true) else { return }
-        
-        let originFrame = fromVC.view.frame
+        snapshot.frame = fromVC.view.frame
+
+        let scaleX = toVC.scanButton.frame.width / fromVC.scannerView.frame.width
+        let scaleY = toVC.scanButton.frame.height / fromVC.scannerView.frame.height
+        let transY = fromVC.scannerView.center.y - toVC.view.frame.height / 2.0 + 30 / scaleY
+        let transform = CGAffineTransform(scaleX: scaleX, y: scaleY).translatedBy(x: 0, y: transY)
+
         let containerView = transitionContext.containerView
-        let finalFrame =  toVC.scanButton.frame
-        
-        snapshot.frame = originFrame
-        snapshot.layer.cornerRadius = 0
-        snapshot.layer.masksToBounds = true
-        
-        fromVC.view.subviews.forEach { $0.removeFromSuperview() }
-        
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshot)
-        toVC.view.isHidden = true
+        toVC.view.alpha = 0
+        
+        fromVC.view.subviews.forEach { $0.removeFromSuperview() }
 
         let toView = transitionContext.view(forKey: .to)
-        
         if let view = toView {
             transitionContext.containerView.addSubview(view)
         }
-        
         let duration = transitionDuration(using: transitionContext)
 
-        UIView.animate(withDuration: duration, animations: {
-            snapshot.frame = finalFrame
-            snapshot.layer.cornerRadius = toVC.scanButton.layer.cornerRadius
-        }) { (success) in
-            toVC.view.isHidden = false
-            snapshot.removeFromSuperview()
-            transitionContext.completeTransition(true)
-        }
+        UIView.animateKeyframes(
+            withDuration: duration,
+            delay: 0,
+            options: .calculationModeCubic,
+            animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
+                    snapshot.transform = transform
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+                    toVC.view.alpha = 1
+                    snapshot.alpha = 0
+                }
+            },
+            completion: { _ in
+                snapshot.removeFromSuperview()
+                if transitionContext.transitionWasCancelled {
+                    toVC.view.removeFromSuperview()
+                }
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            }
+        )
     }
 }

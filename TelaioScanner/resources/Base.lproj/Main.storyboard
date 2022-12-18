@@ -27,7 +27,7 @@
                                 <state key="normal" title="SCAN" backgroundImage="scanner"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -136,8 +136,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="mcl-Pv-3Ch"/>
                     <connections>
+                        <outlet property="closeButton" destination="GMy-xJ-LBi" id="mnS-w5-loN"/>
+                        <outlet property="labelView" destination="rT1-VZ-OXR" id="YQm-4g-fzd"/>
                         <outlet property="plateLabel" destination="uwE-p3-qJb" id="UhX-na-19W"/>
                         <outlet property="scannerView" destination="9xk-eV-Q99" id="AkZ-Gm-22g"/>
+                        <outlet property="subtitleLabel" destination="DMJ-qW-Y6T" id="D6w-6Z-tab"/>
+                        <outlet property="titleLabel" destination="zQu-ou-dEg" id="LYa-h6-KRU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqV-2a-g3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -30,7 +30,11 @@ class ScannerViewController: UIViewController {
     
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var plateLabel: UILabel!
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var labelView: UIView!
+
     private var cancellables = Set<AnyCancellable>()
     private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
     private static let targetSize = TargetSize(width: 300, height: 80)
@@ -39,6 +43,8 @@ class ScannerViewController: UIViewController {
         super.viewDidLoad()
         title = "Inquadra numero di telaio"
         plateLabel.text = ""
+        scannerView.layer.cornerRadius = 20
+        scannerView.clipsToBounds = true
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         scannerView.addGestureRecognizer(pinchRecognizer)
         setupObservers()
