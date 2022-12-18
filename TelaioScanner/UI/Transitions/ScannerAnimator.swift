@@ -31,20 +31,16 @@ extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
     func transition(fromVC: FirstViewController, toVC: ScannerViewController, transitionContext: UIViewControllerContextTransitioning) {
         guard let snapshot = fromVC.view.snapshotView(afterScreenUpdates: true) else { return }
         snapshot.frame = fromVC.view.frame
-        let scaleX = toVC.scannerView.frame.width / fromVC.scanButton.frame.width
-        let scaleY = toVC.scannerView.frame.height / fromVC.scanButton.frame.height
-        let transY = toVC.scannerView.center.y - toVC.view.frame.height / 2.0 + 30
-        let transform = CGAffineTransform(scaleX: scaleX, y: scaleY).translatedBy(x: 0, y: transY)
-        
+
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshot)
         toVC.view.alpha = 0
-        
-        let toView = transitionContext.view(forKey: .to)
-        if let view = toView {
-            transitionContext.containerView.addSubview(view)
-        }
+
+        let scaleX = toVC.scannerView.frame.width / fromVC.scanButton.frame.width
+        let scaleY = toVC.scannerView.frame.height / fromVC.scanButton.frame.height
+        let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+                
         let duration = transitionDuration(using: transitionContext)
         UIView.animateKeyframes(
             withDuration: duration,
@@ -53,6 +49,7 @@ extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
             animations: {
                 UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5) {
                     snapshot.transform = transform
+                    snapshot.center = toVC.scannerView.center
                 }
                 UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
                     toVC.view.alpha = 1
@@ -83,12 +80,7 @@ extension ScannerAnimator: UIViewControllerAnimatedTransitioning {
         toVC.view.alpha = 0
         fromVC.view.subviews.forEach { $0.isHidden = true }
         
-        let toView = transitionContext.view(forKey: .to)
-        if let view = toView {
-            transitionContext.containerView.addSubview(view)
-        }
-        let duration = transitionDuration(using: transitionContext)
-        
+        let duration = transitionDuration(using: transitionContext)        
         UIView.animate(withDuration: duration, animations: {
             snapshot.transform = transform
             toVC.view.alpha = 1
