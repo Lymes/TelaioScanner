@@ -30,15 +30,24 @@ protocol OCRPostProcessor {
 }
 
 class CarPlateOCRValidator: OCRPostProcessor {
+    
+    let confidence: Float
+    let stringLength: Int
+    
+    init(confidence: Float, stringLength: Int) {
+        self.confidence = confidence
+        self.stringLength = stringLength
+    }
+    
     func process(results: [VNRecognizedTextObservation]) -> [String] {
         return results.compactMap {
-            guard $0.confidence > 0.8, let string = $0.topCandidates(1).first?.string else { return nil }
+            guard $0.confidence >= confidence, let string = $0.topCandidates(1).first?.string else { return nil }
 
             let punctuationFreeString = string
                 //.components(separatedBy: .whitespacesAndNewlines).joined()
                 //.components(separatedBy: .punctuationCharacters).joined()
 
-            guard punctuationFreeString.count <= 40 else { return nil }
+            guard punctuationFreeString.count <= stringLength else { return nil }
             return punctuationFreeString
         }
     }

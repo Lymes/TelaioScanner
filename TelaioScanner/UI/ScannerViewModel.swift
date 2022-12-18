@@ -34,7 +34,9 @@ final class ScannerViewModel: NSObject, VideoCaptureServiceDelegate {
     @Published private(set) var captureStarted: Bool = false
 
     private let targetSize: TargetSize
-    private let ocrService: OCRServiceType = OCRService(postProcessor: CarPlateOCRValidator())
+    private let ocrService: OCRServiceType = OCRService(
+        postProcessor: CarPlateOCRValidator(confidence: 0.8, stringLength: 40)
+    )
     private let captureService: VideoCaptureServiceType
     
     var previewLayer: AVCaptureVideoPreviewLayer {

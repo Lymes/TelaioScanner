@@ -33,7 +33,7 @@ class ScannerViewController: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
     private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
-    private static let targetSize = TargetSize(width: 300, height: 50)
+    private static let targetSize = TargetSize(width: 300, height: 80)
     
     override func viewDidLoad() {
         super.viewDidLoad()
