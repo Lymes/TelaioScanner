@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,12 +35,25 @@
                                     <segue destination="JXC-hB-mDP" kind="presentation" customClass="ScannerSegue" customModule="TelaioScanner" customModuleProvider="target" modalPresentationStyle="fullScreen" id="sdd-f0-Kxc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premi per scannerizzare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="420-Yq-AO8">
+                                <rect key="frame" x="10" y="270" width="373" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="e2y-lH-Pn4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="420-Yq-AO8" secondAttribute="trailing" id="2WB-VU-SuK"/>
+                            <constraint firstItem="Kzf-s5-I2r" firstAttribute="top" secondItem="420-Yq-AO8" secondAttribute="bottom" constant="85" id="5ZG-Ka-KeH"/>
+                            <constraint firstItem="420-Yq-AO8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="6a8-99-ddT"/>
                             <constraint firstItem="Kzf-s5-I2r" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="CX9-n6-yEL"/>
                             <constraint firstItem="Kzf-s5-I2r" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SLD-l8-NfW"/>
+                            <constraint firstItem="420-Yq-AO8" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="r3u-8Z-dIY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wDe-xY-yld"/>
@@ -120,6 +134,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6im-7G-qzi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9xk-eV-Q99" secondAttribute="trailing" constant="10" id="4f2-KO-mvF"/>

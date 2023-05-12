@@ -7,7 +7,10 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, ResizeTransitable {
+
+    var viewToResize: UIView { scanButton }
+    var viewToHide: [UIView] { [] }
 
     @IBOutlet weak var scanButton: UIButton!
     

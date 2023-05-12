@@ -26,10 +26,14 @@
 import UIKit
 import Combine
 
-class ScannerViewController: UIViewController {
+class ScannerViewController: UIViewController, ResizeTransitable {
     
     @IBOutlet weak var scannerView: UIView!
     @IBOutlet weak var plateLabel: UILabel!
+
+    var viewToResize: UIView { scannerView }
+    var viewToHide: [UIView] { [plateLabel] }
+
 
     private var cancellables = Set<AnyCancellable>()
     private let viewModel = ScannerViewModel(targetSize: ScannerViewController.targetSize)
